@@ -6,7 +6,7 @@ require 'open_api/dsl/components'
 module OpenApi
   module DSL
     extend ActiveSupport::Concern
-    
+
     class_methods do
       def oas
         @oas ||= { doc: { }, dry_blocks: { }, apis: { }, route_base: try(:controller_path),
@@ -38,7 +38,7 @@ module OpenApi
         return Tip.no_route(action_path) if routes.blank?
 
         tag = tag || oas[:doc][:tag][:name]
-        api = Api.new(action_path, summary: summary, tags: [tag], id: id || "#{tag}_#{action.to_s.camelize}")
+        api = Api.new(action_path, summary: summary, tags: [tag], id: id || "#{tag.to_s.parameterize}-#{action.to_s.parameterize}")
         [action, tag, :all].each { |key| api.dry_blocks.concat(oas[:dry_blocks][key] || [ ]) }
         api.run_dsl(dry: dry, &block)
         _set_apis(api, routes, http)

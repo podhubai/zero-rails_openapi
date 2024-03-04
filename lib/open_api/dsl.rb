@@ -18,6 +18,10 @@ module OpenApi
         oas[:tag_name] = path.split('/').last.camelize
       end
 
+      def operation_id_prefix prefix
+        oas[:id_prefix] = prefix
+      end
+
       # APIs will be grouped by tags.
       def doc_tag name: nil, **tag_info #  description: ..., externalDocs: ...
         oas[:doc][:tag] = { name: name || oas[:tag_name], **tag_info }
@@ -38,7 +42,7 @@ module OpenApi
         return Tip.no_route(action_path) if routes.blank?
 
         tag = tag || oas[:doc][:tag][:name]
-        api = Api.new(action_path, summary: summary, tags: [tag], id: id || "#{tag.to_s.parameterize}-#{action.to_s.parameterize}")
+        api = Api.new(action_path, summary: summary, tags: [tag], id: id || [oas[:id_prefix]&.to_s, tag&.to_s&.parameterize, action.to_s.parameterize].compact_blank.join('-'))
         [action, tag, :all].each { |key| api.dry_blocks.concat(oas[:dry_blocks][key] || [ ]) }
         api.run_dsl(dry: dry, &block)
         _set_apis(api, routes, http)

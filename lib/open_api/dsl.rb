@@ -42,7 +42,8 @@ module OpenApi
         return Tip.no_route(action_path) if routes.blank?
 
         tag = tag || oas[:doc][:tag][:name]
-        api = Api.new(action_path, summary: summary, tags: [tag], id: id || [oas[:id_prefix]&.to_s, tag&.to_s&.parameterize, action.to_s.parameterize].compact_blank.join('-'))
+        default_id = [oas[:id_prefix]&.to_s, tag.to_s.gsub(' ', '').underscore, action.to_s.underscore].compact_blank.join('_')
+        api = Api.new(action_path, summary: summary, tags: [tag], id: id || default_id)
         [action, tag, :all].each { |key| api.dry_blocks.concat(oas[:dry_blocks][key] || [ ]) }
         api.run_dsl(dry: dry, &block)
         _set_apis(api, routes, http)

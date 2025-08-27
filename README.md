@@ -1,9 +1,9 @@
 # ZRO: OpenApi 3 JSON-Doc Generator for Rails
 
   [![Gem Version](https://badge.fury.io/rb/zero-rails_openapi.svg)](https://badge.fury.io/rb/zero-rails_openapi)
-  [![Build Status](https://travis-ci.org/zhandao/zero-rails_openapi.svg?branch=master)](https://travis-ci.org/zhandao/zero-rails_openapi)
-  [![Maintainability](https://api.codeclimate.com/v1/badges/471fd60f6eb7b019ceed/maintainability)](https://codeclimate.com/github/zhandao/zero-rails_openapi/maintainability)
-  [![Test Coverage](https://api.codeclimate.com/v1/badges/471fd60f6eb7b019ceed/test_coverage)](https://codeclimate.com/github/zhandao/zero-rails_openapi/test_coverage)
+  [![Build Status](https://travis-ci.org/podhubai/zero-rails_openapi.svg?branch=master)](https://travis-ci.org/podhubai/zero-rails_openapi)
+  [![Maintainability](https://api.codeclimate.com/v1/badges/471fd60f6eb7b019ceed/maintainability)](https://codeclimate.com/github/podhubai/zero-rails_openapi/maintainability)
+  [![Test Coverage](https://api.codeclimate.com/v1/badges/471fd60f6eb7b019ceed/test_coverage)](https://codeclimate.com/github/podhubai/zero-rails_openapi/test_coverage)
 
   Concise DSL for generating OpenAPI Specification 3 (**OAS3**, formerly Swagger3) JSON documentation for Rails application.
   
@@ -19,7 +19,6 @@
 
 ## Contributing
 
-  **Hi, here is ZhanDao = ▽ =  
   It may be a very useful tool if you want to write API document clearly.  
   I'm looking forward to your issue and PR!**
   
@@ -78,9 +77,7 @@
   Add this line to your Rails's Gemfile:
 
   ```ruby
-  gem 'zero-rails_openapi'
-  # or
-  gem 'zero-rails_openapi', github: 'zhandao/zero-rails_openapi'
+  gem 'zero-rails_openapi', github: 'podhubai/zero-rails_openapi'
   ```
 
   And then execute:
@@ -392,7 +389,7 @@
   # b. `attr_name!` means it is required, without '!' means optional
   # c. options: desc / exp_params and examples
   # d. available `media_type` see: 
-  #   https://github.com/zhandao/zero-rails_openapi/blob/master/lib/oas_objs/media_type_obj.rb#L29
+  #   https://github.com/podhubai/zero-rails_openapi/blob/master/lib/oas_objs/media_type_obj.rb#L29
   request_body required, media_type, data: { }, desc: '', **options
   # ** Usage
   request_body :opt, :form, data: {
@@ -661,7 +658,7 @@
 #### Schema
 
   [OAS Schema Object](https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/versions/3.0.0.md#schemaObject)
-  and [source code](https://github.com/zhandao/zero-rails_openapi/blob/master/lib/oas_objs/schema_obj.rb)
+  and [source code](https://github.com/podhubai/zero-rails_openapi/blob/master/lib/oas_objs/schema_obj.rb)
   
   Schema (Hash) is for defining properties of parameters, responses and request bodies.
   

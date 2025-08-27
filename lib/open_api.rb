@@ -33,7 +33,8 @@ module OpenApi
 
   def generate_doc(doc_name)
     settings, doc = init_hash(doc_name)
-    [*(bdc = settings[:base_doc_classes]), *bdc.flat_map(&:descendants)].each do |kls|
+    base_doc_classes = settings[:base_doc_classes] || []
+    [*base_doc_classes, *base_doc_classes.flat_map(&:descendants)].each do |kls|
       next if kls.oas[:doc].blank?
       doc[:paths].merge!(kls.oas[:apis])
       doc[:tags] << kls.oas[:doc][:tag]

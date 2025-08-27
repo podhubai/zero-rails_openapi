@@ -6,12 +6,12 @@ require 'open_api/version'
 Gem::Specification.new do |spec|
   spec.name          = 'zero-rails_openapi'
   spec.version       = OpenApi::VERSION
-  spec.authors       = ['zhandao']
-  spec.email         = ['x@skippingcat.com']
+  spec.authors       = ['podhub']
+  spec.email         = ['support@podhub.ai']
 
   spec.summary       = 'Concise DSL for generating OpenAPI3 documentation.'
   spec.description   = 'Concise DSL for generating OpenAPI Specification 3 (OAS3) JSON documentation for Rails application.'
-  spec.homepage      = 'https://github.com/zhandao/zero-rails_openapi'
+  spec.homepage      = 'https://github.com/podhubai/zero-rails_openapi'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
